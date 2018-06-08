@@ -20,6 +20,8 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
 
 	public static void main(String[] args) {
+		System.setProperty("spring.devtools.restart.enabled","true");
+		System.setProperty("spring.devtools.restart.additional-paths","../security,../provider");
 		SpringApplication.run(SpringBootFamilyApplication.class, args);
 	}
 }

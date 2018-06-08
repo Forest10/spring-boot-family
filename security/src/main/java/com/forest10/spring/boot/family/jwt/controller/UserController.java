@@ -25,7 +25,6 @@ public class UserController {
 	@Resource
 	private UserAuthRepository userAuthRepository;
 
-
 	@PostMapping("/signup")
 	public void signUp(@RequestBody UserAuth user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -33,9 +32,8 @@ public class UserController {
 	}
 
 	@RequestMapping("/hello")
-	@ResponseBody
 	public String hello(){
-		return "hello";
+		return "2132";
 	}
 
 }
