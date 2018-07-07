@@ -8,28 +8,24 @@ import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 描述:
- * 书籍阅读 Controller
+ * Api限流测试
  *
  * @author Forest10
- * @date 2018/04/01 16:12
+ * @date 2018/07/07 21:21
  */
 @RestController
-public class ReadingListController {
-
-	@Autowired
-	private ReadingListRepository readingListRepository;
+@RequestMapping("/limit")
+public class TestLimiterController {
 
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public JsonResult addBook(@RequestBody Book book) {
-		return JsonResult.success("添加成功", readingListRepository.save(book));
-	}
-
+	@RequestLimitRate
 	@GetMapping(value = "/getList")
 	public JsonResult getList() {
-		return JsonResult.success("获取列表成功", readingListRepository.findAll());
+		return JsonResult.success("获取列表成功", Lists.newArrayList());
 	}
 
 
