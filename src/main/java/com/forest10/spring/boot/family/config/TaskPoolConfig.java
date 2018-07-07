@@ -25,6 +25,9 @@ public class TaskPoolConfig {
 		executor.setKeepAliveSeconds(60);
 		executor.setThreadNamePrefix("taskExecutor-");
 		executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
+		//防止任务未执行完毕就关闭线程池
+		executor.setWaitForTasksToCompleteOnShutdown(true);
+		executor.setAwaitTerminationSeconds(60);
 		return executor;
 	}
 
