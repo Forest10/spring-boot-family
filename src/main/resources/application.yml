@@ -15,5 +15,18 @@ spring:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # 解决Springboot2.0中Hibernate默认创建的mysq表为myisam引擎问题
+  redis:
+    host:
+    port:
+    password:
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 1
+        max-idle: 8
+        min-idle: 0
+    timeout: 600
+
+
 
 

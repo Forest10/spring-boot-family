@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * 描述:
@@ -19,11 +20,10 @@ import javax.persistence.Id;
  * @date 2018/04/01 16:00
  */
 @Data
-@ToString
+@Entity
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Entity
-public class Book {
+public class Book implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
