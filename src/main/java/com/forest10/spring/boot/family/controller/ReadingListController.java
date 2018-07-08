@@ -1,14 +1,11 @@
 package com.forest10.spring.boot.family.controller;
 
-import com.forest10.spring.boot.family.api.pojo.JsonResult;
-import com.forest10.spring.boot.family.domain.Book;
-import com.forest10.spring.boot.family.repository.ReadingListRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.forest10.spring.boot.family.service.BookService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * 描述:
@@ -17,14 +14,22 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Forest10
  * @date 2018/04/01 16:12
  */
-@RestController
+@Controller
 public class ReadingListController {
 
-	@Autowired
-	private ReadingListRepository readingListRepository;
+	@Resource
+	private BookService bookService;
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public JsonResult addBook(@RequestBody Book book) {
-		return JsonResult.success("添加成功", readingListRepository.save(book));
+	private static final String TEMPLATE_INDEX = "index";
+
+	@RequestMapping(value = "/")
+	public String index() {
+		return TEMPLATE_INDEX;
+	}
+
+	@RequestMapping(value = "/list")
+	public String getList(Model model) {
+		model.addAttribute("books", bookService.getAll());
+		return "book/list";
 	}
 }
