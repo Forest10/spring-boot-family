@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   datasource:
     username: blfip
@@ -15,5 +15,11 @@ spring:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # 解决Springboot2.0中Hibernate默认创建的mysq表为myisam引擎问题
-
+  boot:
+    admin:
+      client:
+       url: http://localhost:8080
+#management:
+#  security:
+#    enabled: false
 
