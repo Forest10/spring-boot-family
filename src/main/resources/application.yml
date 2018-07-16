@@ -17,7 +17,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # 解决Springboot2.0中Hibernate默认创建的mysq表为myisam引擎问题
   rabbitmq:
     host: 127.0.0.1
-    port: 15672
+    port: 5672
     username: test
     password: 123456
 
