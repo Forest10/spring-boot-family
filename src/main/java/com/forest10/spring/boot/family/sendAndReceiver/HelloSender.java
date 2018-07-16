@@ -24,7 +24,7 @@ public class HelloSender {
 	public void send() {
 		String content = "hello " + LocalDateTime.now();
 		log.info("发送:" + content);
-		amqpTemplate.convertAndSend("Forest10", content);
+		amqpTemplate.convertAndSend("hello", content);
 	}
 
 }
