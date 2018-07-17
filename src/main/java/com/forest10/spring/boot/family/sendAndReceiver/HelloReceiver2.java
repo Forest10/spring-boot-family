@@ -1,8 +1,10 @@
 package com.forest10.spring.boot.family.sendAndReceiver;
 
+import com.forest10.spring.boot.family.domain.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,12 +13,12 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = "hello")
+@RabbitListener(queues = "domainObject")
 public class HelloReceiver2 {
 
 	@RabbitHandler
-	public void process(String hello) {
-		log.info("HelloReceiver2接收:" + hello);
+	public void process(@Payload Book book) {
+		log.info("HelloReceiver2接收:" + book);
 	}
 
 }

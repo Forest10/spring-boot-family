@@ -1,7 +1,5 @@
 package com.forest10.spring.boot.family.conf;
 
-import org.springframework.amqp.core.Queue;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -13,8 +11,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CoreConf {
 
-	@Bean
-	public Queue queue() {
-		return new Queue("hello");
-	}
+
 }

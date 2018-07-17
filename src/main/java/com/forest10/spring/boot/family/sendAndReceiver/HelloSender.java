@@ -1,5 +1,6 @@
 package com.forest10.spring.boot.family.sendAndReceiver;
 
+import com.forest10.spring.boot.family.domain.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,16 @@ public class HelloSender {
 		String content = "hello " + LocalDateTime.now();
 		log.info("发送:" + content);
 		amqpTemplate.convertAndSend("hello", content);
+	}
+
+	@Scheduled(fixedDelay = 3000)
+	public void sendDomainObject() {
+		Book book = new Book();
+		book.setId(1L);
+		book.setIsbn("send");
+		book.setReader(LocalDateTime.now().toString());
+		log.info("sendDomainObject:" + book);
+		amqpTemplate.convertAndSend("domainObject", book);
 	}
 
 }

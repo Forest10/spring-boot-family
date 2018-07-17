@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * 描述:
@@ -23,7 +24,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
-public class Book {
+public class Book implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
