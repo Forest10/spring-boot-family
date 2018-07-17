@@ -1,4 +1,4 @@
-package com.forest10.spring.boot.family.sendAndReceiver;
+package com.forest10.spring.boot.family.sendAndReceiver.common;
 
 import com.forest10.spring.boot.family.domain.Book;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.forest10.spring.boot.family.sendAndReceiver;
+package com.forest10.spring.boot.family.sendAndReceiver.common;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = "topic.messages")
-public class HelloReceiver3 {
+@RabbitListener(queues = "topic.message")
+public class HelloReceiver1 {
 
 	@RabbitHandler
 	public void process(String hello) {
-		log.info("HelloReceiver3接收:" + hello);
+		log.info("HelloReceiver1接收:" + hello);
 	}
 
 }

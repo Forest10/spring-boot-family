@@ -1,4 +1,4 @@
-package com.forest10.spring.boot.family.sendAndReceiver;
+package com.forest10.spring.boot.family.sendAndReceiver.common;
 
 import com.forest10.spring.boot.family.conf.CoreConf;
 import com.forest10.spring.boot.family.domain.Book;
@@ -26,7 +26,7 @@ public class HelloSender {
 	public void sendMessage1() {
 		String content = "hello,I`m message 1; " + LocalDateTime.now();
 		log.info("发送1:" + content);
-		amqpTemplate.convertAndSend(CoreConf.exchange,CoreConf.message, content);
+		amqpTemplate.convertAndSend(CoreConf.exchange, CoreConf.message, content);
 	}
 
 
@@ -45,7 +45,7 @@ public class HelloSender {
 	public void sendMessage3() {
 		String content = "hello,I`m message 3; " + LocalDateTime.now();
 		log.info("发送3:" + content);
-		amqpTemplate.convertAndSend(CoreConf.exchange,CoreConf.messages, content);
+		amqpTemplate.convertAndSend(CoreConf.exchange, CoreConf.messages, content);
 	}
 
 }
