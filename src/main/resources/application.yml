@@ -20,4 +20,5 @@ spring:
     port: 5672
     username: test
     password: 123456
+    publisher-confirms: true
 

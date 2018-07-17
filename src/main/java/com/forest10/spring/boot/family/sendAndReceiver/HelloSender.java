@@ -1,5 +1,6 @@
 package com.forest10.spring.boot.family.sendAndReceiver;
 
+import com.forest10.spring.boot.family.conf.CoreConf;
 import com.forest10.spring.boot.family.domain.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -22,11 +23,12 @@ public class HelloSender {
 	private AmqpTemplate amqpTemplate;
 
 	@Scheduled(fixedRate = 3000)
-	public void send() {
-		String content = "hello " + LocalDateTime.now();
-		log.info("发送:" + content);
-		amqpTemplate.convertAndSend("hello", content);
+	public void sendMessage1() {
+		String content = "hello,I`m message 1; " + LocalDateTime.now();
+		log.info("发送1:" + content);
+		amqpTemplate.convertAndSend(CoreConf.exchange,CoreConf.message, content);
 	}
+
 
 	@Scheduled(fixedDelay = 3000)
 	public void sendDomainObject() {
@@ -35,7 +37,15 @@ public class HelloSender {
 		book.setIsbn("send");
 		book.setReader(LocalDateTime.now().toString());
 		log.info("sendDomainObject:" + book);
-		amqpTemplate.convertAndSend("domainObject", book);
+		amqpTemplate.convertAndSend(CoreConf.topicHello, book);
+	}
+
+
+	@Scheduled(fixedRate = 3000)
+	public void sendMessage3() {
+		String content = "hello,I`m message 3; " + LocalDateTime.now();
+		log.info("发送3:" + content);
+		amqpTemplate.convertAndSend(CoreConf.exchange,CoreConf.messages, content);
 	}
 
 }

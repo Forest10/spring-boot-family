@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = "domainObject")
+@RabbitListener(queues = "topic.hello")
 public class HelloReceiver2 {
 
 	@RabbitHandler

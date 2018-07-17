@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@RabbitListener(queues = "topic.message")
-public class HelloReceiver1 {
+@RabbitListener(queues = "topic.messages")
+public class HelloReceiver3 {
 
 	@RabbitHandler
 	public void process(String hello) {
-		log.info("HelloReceiver1接收:" + hello);
+		log.info("HelloReceiver3接收:" + hello);
 	}
 
 }
