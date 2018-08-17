@@ -1,8 +1,7 @@
 package com.forest10.spring.boot.family.handler;
 
 import com.forest10.spring.boot.family.api.pojo.JsonResult;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -20,11 +19,10 @@ import java.util.List;
  * @author Forest10
  * @date 2018/8/15 下午3:44
  */
+@Slf4j
 @ResponseBody
 @ControllerAdvice
 public class GlobalExceptionAdvice {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionAdvice.class);
 
 	/**
 	 * 200 - OK
@@ -32,7 +30,7 @@ public class GlobalExceptionAdvice {
 	@ResponseStatus(HttpStatus.OK)
 	@ExceptionHandler(value = {BindException.class, MethodArgumentNotValidException.class})
 	public Serializable handleArgumentNotValidException(Exception e) {
-		LOGGER.error("参数绑定错误!", e);
+		log.error("参数绑定错误!", e);
 		//1.拿到绑定结果
 		BindingResult bindingResult;
 		if (e instanceof BindException) {
@@ -56,7 +54,7 @@ public class GlobalExceptionAdvice {
 	@ResponseStatus(HttpStatus.OK)
 	@ExceptionHandler(value = {Exception.class})
 	public Serializable handleException(Exception e) {
-		LOGGER.error("未知错误!", e);
+		log.error("未知错误!", e);
 		return JsonResult.error("未知错误");
 	}
 
