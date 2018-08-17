@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 9999
 spring:
   datasource:
-    username: blfip
-    password: d&IB@S&aW%w%i58S
+    username: pay
+    password: L%ihS7wf&h4ioV3*
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://140.143.242.205:13136/bilibili_test?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://140.143.242.205:13136/pay?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
   jpa:
     show-sql: true
     generate-ddl: true
