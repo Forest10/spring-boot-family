@@ -29,4 +29,5 @@ public interface WxPayConstant {
     String AUTHORIZED_URL = "";
     /**通知URL**/
     String NOTIFY_URL = "http://wxpay.forest10.com/";
+
 }

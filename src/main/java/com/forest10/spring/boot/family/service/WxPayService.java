@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * @author Forest10
  * @date 2018/8/28 13:30
- * Description
+ * Description:为了测试,一切从简
  */
 @Service
 public class WxPayService {
@@ -30,7 +30,7 @@ public class WxPayService {
      * @return
      */
     public WxPrePayConfBean getPreWxPayCofig() {
-        String jsapi_ticket = "HoagFKDcsGMVCIY2vOjf9lfjqMKxQh3rpBbpZpHv5rS2oZxcTDDL1CUi_nRuy1YNT1IZdCgpFfRLLQxz2qN0sA";
+        String jsapi_ticket = "需要Redis进行缓存";
         String nonce_str = WxPayUtil.createNonceStr();
         String timestamp = WxPayUtil.createTimestamp();
         String signature = "";
@@ -69,8 +69,8 @@ public class WxPayService {
      * @param openId:公众号关注者openId
      * @return
      */
-    public String getPrepareId(int totalFee, String body, String orderId,
-                               String openId) throws Exception {
+    public Map<String, String> getPrepareId(int totalFee, String body, String orderId,
+                                            String openId) throws Exception {
         // 构造请求参数
         Map<String, String> params = Maps.newHashMap();
         params.put("appid", WxPaySecurity.APP_ID);
@@ -93,7 +93,7 @@ public class WxPayService {
         String returnXml = HttpSendAndRecieve.sendPost(WxPayConstant.UNIFIED_ORDER_URL, WXPayXmlUtil.mapToXml(params));
 
 
-        return WXPayXmlUtil.xmlToMap(returnXml).get("prepay_id");
+        return WXPayXmlUtil.xmlToMap(returnXml);
 
     }
     /***
@@ -111,8 +111,8 @@ public class WxPayService {
      * @return
      */
     public WxPayConfBean getWxPayConfBean(String orderId) throws Exception {
-        String packageStr = getPrepareId(
-                1, "Forest10测试", orderId, "oRqTv03TV9tCZYSmLUwmOo7oaHRY");
+        Map<String, String> packageStr = getPrepareId(
+                1, "Forest10测试", orderId, "暂时使用的openId");
 
         String timestamp = WxPayUtil.createTimestamp();
         String nonce_str = WxPayUtil.createNonceStr();
@@ -121,7 +121,7 @@ public class WxPayService {
         paramsMap.put("appId", WxPaySecurity.APP_ID);
         paramsMap.put("timeStamp", timestamp);
         paramsMap.put("nonceStr", nonce_str);
-        paramsMap.put("package", "prepay_id=" + packageStr);
+        paramsMap.put("package", "prepay_id=" + packageStr.get("prepay_id"));
         paramsMap.put("signType", WxPayConstant.MD5);
         String paySign = WxPayUtil.signParams(paramsMap, WxPaySecurity.MERCHANT_KEY);
 
