@@ -1,4 +1,4 @@
-package com.forest10.spring.boot.family.res;
+package com.forest10.spring.boot.family.provider.common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

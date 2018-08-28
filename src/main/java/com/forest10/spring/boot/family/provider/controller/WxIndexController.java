@@ -1,4 +1,4 @@
-package com.forest10.spring.boot.family.controller;
+package com.forest10.spring.boot.family.provider.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

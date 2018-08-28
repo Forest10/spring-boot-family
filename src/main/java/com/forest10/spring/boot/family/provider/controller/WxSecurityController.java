@@ -1,7 +1,7 @@
-package com.forest10.spring.boot.family.controller;
+package com.forest10.spring.boot.family.provider.controller;
 
 import com.forest10.spring.boot.family.bean.WxPayConfBean;
-import com.forest10.spring.boot.family.res.JsonResult;
+import com.forest10.spring.boot.family.provider.common.JsonResult;
 import com.forest10.spring.boot.family.service.WxPayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
