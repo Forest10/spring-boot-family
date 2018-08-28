@@ -1,0 +1,33 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {margin: 0;padding: 0;border: 0;font-size: 1.4rem;font: inherit;vertical-align: baseline;}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display: block;}
+body {line-height: 1;}
+ol,ul {list-style: none;}
+blockquote,q {quotes: none;}
+blockquote:before,blockquote:after,q:before,q:after {content: '';content: none;}
+a,a:hover {text-decoration: none;}
+button{outline:none;}
+
+body{ margin: 0; padding: 0; background-color: #FFFFFF;}
+.content{ width: 100%; overflow-x: hidden;}
+.content-header{ width: 100%; background-color: #1E81D2; display: inline-block; position: fixed; top: 0;}
+.content-header h3{ text-align: center; color: #FFFFFF; font-weight: normal; margin: 1em auto;}
+.content-wrapper{ width: 100%; display: inline-block; margin: 3em 0;}
+.content-wrapper h4{ background-color: #F5F5F5; color: #333333; width: 100%; display: inline-block; padding: 1em 15px;}
+.content-wrapper ul{ margin: 1em 15px;}
+.content-wrapper ul li{ line-height: 2em;}
+.content-wrapper ul li label{ color: #333333;}
+.content-wrapper ul li span{ color: #FF4F49;}
+.content-wrapper ul li i.wx-pay{ width: 100px; height: 30px; display: inline-block; background: url(../img/wx-pay.png) no-repeat; background-size: contain;}
+.content-wrapper div.pay-tips{ margin: 1.2em 15px 6em; color: #555555; line-height: 25px; font-size: 90%; text-align: left;}
+.content-wrapper div.pay-tips b{ font-weight: bold;}
+.footer-btn{ background-color: #F6F6F6; border-top: 1px solid #CCCCCC; position: fixed; bottom: 0; width: 100%; text-align: center;}
+button.pay-btn{ background-color: #EB1716; color: #FFFFFF; border: 0; padding: 1em 15px; width: 90%; margin: 1em auto; border-radius: 5px;}
+.pay-status i{ width: 100%; height: 4.5em; display: inline-block; margin: 1em 0;}
+.pay-status center{ font-size: 110%;}
+.pay-status div.pay-tips{ text-align: center;}
+.pay-abnormal,.pay-overdue,.pay-success{ margin: 3em auto; width: 90%;}
+.pay-abnormal i{ background: url(../img/icon-abnormal.png) no-repeat center; background-size: contain;}
+.pay-overdue i{ background: url(../img/icon-overdue.png) no-repeat center; background-size: contain;}
+.pay-success i{ background: url(../img/icon-success.png) no-repeat center; background-size: contain;}
+button.back-paybtn{ background-color: #EB1716; color: #FFFFFF; border: 0; padding: 1em 15px; width: 70%; margin: 1em 15%; border-radius: 5px;}
