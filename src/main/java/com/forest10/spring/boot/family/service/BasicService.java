@@ -6,4 +6,8 @@ package com.forest10.spring.boot.family.service;
  * 占位
  */
 public interface BasicService {
+
+
+	String sayHello(String name);
+
 }

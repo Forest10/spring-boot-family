@@ -5,7 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 
+@ComponentScan(basePackages = {"com.forest10.spring.boot.family"})
+@ImportResource({"classpath:/dubbo/*.xml"})
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
