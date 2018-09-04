@@ -12,7 +12,7 @@
 
     <dubbo:consumer timeout="10000"/>
 
-    <dubbo:registry id="common.registry" username="vistor" password="vistor" protocol="zookeeper" address="${common.zk.address}"
+    <dubbo:registry id="common.registry" protocol="zookeeper" address="${common.zk.address}"
                     group="${common.group}" check="false"/>
 
 </beans>
