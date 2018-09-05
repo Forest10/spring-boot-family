@@ -7,8 +7,8 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
 
-    <dubbo:service interface="com.forest10.spring.boot.family.service.BasicService"
-                   class="com.forest10.spring.boot.family.service.impl.BasicServiceImpl" version="1.0"
+    <dubbo:service interface="com.forest10.spring.boot.family.service.DubboService"
+                   class="com.forest10.spring.boot.family.service.impl.DubboServiceImpl" version="1.0"
                    registry="common.registry"/>
 
 

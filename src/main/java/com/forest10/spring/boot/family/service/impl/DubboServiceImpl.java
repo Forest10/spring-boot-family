@@ -1,6 +1,6 @@
 package com.forest10.spring.boot.family.service.impl;
 
-import com.forest10.spring.boot.family.service.BasicService;
+import com.forest10.spring.boot.family.service.DubboService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
  * @date 2018/9/4 下午2:30
  */
 @Service
-public class BasicServiceImpl implements BasicService {
+public class DubboServiceImpl implements DubboService {
 	@Override
-	public String sayHello(String name) {
-		return "Hello " + name;
+	public String quickSay(Integer name) {
+		return "Hello" + name;
 	}
 }

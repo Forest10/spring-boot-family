@@ -3,7 +3,7 @@ server:
 
 dubbo:
   protocol:
-    port: 12819
+    port: 12182
 
 common:
   zk:

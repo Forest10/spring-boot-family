@@ -5,9 +5,9 @@ package com.forest10.spring.boot.family.service;
  * @date 2018/9/4 下午2:28
  * 占位
  */
-public interface BasicService {
+public interface DubboService {
 
 
-	String sayHello(String name);
+	String quickSay(Integer name);
 
 }
