@@ -23,6 +23,6 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
 	@RequestMapping("/")
 	public String index() {
-		return "test jenkins auto build";
+		return "test git commit";
 	}
 }
