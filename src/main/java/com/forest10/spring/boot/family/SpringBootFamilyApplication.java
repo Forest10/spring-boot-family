@@ -23,6 +23,6 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
 	@RequestMapping("/")
 	public String index() {
-		return "test rsync1";
+		return "index";
 	}
 }
