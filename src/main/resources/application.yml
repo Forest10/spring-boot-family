@@ -1,7 +1,9 @@
 server:
   port: 8080
 
-core:
-  cpu: Xeno
+qiniu:
+  accessKey: 123
+  secretKey: -232
+  bucket: private
 
 

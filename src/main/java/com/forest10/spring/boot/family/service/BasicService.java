@@ -6,4 +6,12 @@ package com.forest10.spring.boot.family.service;
  * 占位
  */
 public interface BasicService {
+
+	/**
+	 * 获取基础上传凭证
+	 *
+	 * @return
+	 */
+	String basicToken();
+
 }
