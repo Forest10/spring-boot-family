@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
+ * 基础配置文件
+ *
  * @author Forest10
  * @date 2018/9/10 下午8:31
  */
