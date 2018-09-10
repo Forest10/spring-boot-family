@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
  * @date 2018/9/4 下午5:22
  */
 @Service
-public class BasicServiceimpl implements BasicService {
+public class BasicServiceImpl implements BasicService {
 }
