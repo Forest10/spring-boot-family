@@ -6,6 +6,13 @@ spring:
     password: d&IB@S&aW%w%i58S
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://140.143.242.205:13136/bilibili_test?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    hikari:
+      validation-timeout: 3000
+      connection-timeout: 60000
+      idle-timeout: 60000
+      max-lifetime: 60000
+      maximum-pool-size: 10
+      connection-test-query: SELECT 1
   jpa:
     show-sql: true
     generate-ddl: true
@@ -16,16 +23,16 @@ spring:
     open-in-view: false
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # 解决Springboot2.0中Hibernate默认创建的mysq表为myisam引擎问题
   redis:
-    host:
-    port:
-    password:
+    host: txredis.forest10.com
+    port: 16379
+    password: fefdfd
     lettuce:
       pool:
         max-active: 8
         max-wait: 1
         max-idle: 8
         min-idle: 0
-    timeout: 600
+    database: 0
 
 
 

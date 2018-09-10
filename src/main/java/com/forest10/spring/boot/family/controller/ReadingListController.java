@@ -1,11 +1,9 @@
 package com.forest10.spring.boot.family.controller;
 
 import com.forest10.spring.boot.family.api.pojo.JsonResult;
-import com.forest10.spring.boot.family.domain.Book;
-import com.forest10.spring.boot.family.repository.ReadingListRepository;
 import com.forest10.spring.boot.family.service.ReadingService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 

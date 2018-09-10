@@ -1,6 +1,5 @@
 package com.forest10.spring.boot.family.conf;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
@@ -48,9 +47,13 @@ public class RedisConf {
 		RedisTemplate<String, Serializable> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setKeySerializer(stringRedisSerializer);
 		redisTemplate.setValueSerializer(genericJackson2JsonRedisSerializer);
-		redisTemplate.setHashKeySerializer(stringRedisSerializer);//Hash key序列化
-		redisTemplate.setHashValueSerializer(genericJackson2JsonRedisSerializer);//Hash value序列化
+		//Hash key序列化
+		redisTemplate.setHashKeySerializer(stringRedisSerializer);
+		//Hash value序列化
+		redisTemplate.setHashValueSerializer(genericJackson2JsonRedisSerializer);
 		redisTemplate.setConnectionFactory(redisConnectionFactory);
+		//加入Redis 注解支持
+		redisTemplate.setEnableTransactionSupport(Boolean.TRUE);
 		redisTemplate.afterPropertiesSet();
 		return redisTemplate;
 	}

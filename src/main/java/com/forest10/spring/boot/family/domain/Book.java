@@ -1,9 +1,9 @@
 package com.forest10.spring.boot.family.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +21,7 @@ import java.io.Serializable;
  */
 @Data
 @Entity
+@Builder
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Book implements Serializable {
@@ -33,4 +34,5 @@ public class Book implements Serializable {
 	private String reader;
 
 	private String isbn;
+
 }
