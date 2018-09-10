@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties(prefix="core")
+@ConfigurationProperties(prefix = "core")
 public class CoreProperties {
 
 	private String cpu;
