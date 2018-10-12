@@ -6,7 +6,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -19,21 +18,20 @@ import javax.annotation.Resource;
 @RestController
 public class UserController {
 
+    @Resource
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Resource
+    private UserAuthRepository userAuthRepository;
 
-	@Resource
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	@Resource
-	private UserAuthRepository userAuthRepository;
+    @PostMapping("/signup")
+    public void signUp(@RequestBody UserAuth user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userAuthRepository.save(user);
+    }
 
-	@PostMapping("/signup")
-	public void signUp(@RequestBody UserAuth user) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		userAuthRepository.save(user);
-	}
-
-	@RequestMapping("/hello")
-	public String hello(){
-		return "2132";
-	}
+    @RequestMapping("/hello")
+    public String hello() {
+        return "2132";
+    }
 
 }

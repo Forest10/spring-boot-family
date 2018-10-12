@@ -19,9 +19,8 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest req,
-                                    HttpServletResponse res,
-                                    FilterChain chain) throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
+        throws IOException, ServletException {
         String header = req.getHeader("Authorization");
 
         if (header == null || !header.startsWith("Bearer ")) {
@@ -31,7 +30,8 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
         UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext()
+            .setAuthentication(authentication);
         chain.doFilter(req, res);
     }
 
@@ -40,10 +40,10 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         if (token != null) {
             // parse the token.
             String user = Jwts.parser()
-                    .setSigningKey("MyJwtSecret")
-                    .parseClaimsJws(token.replace("Bearer ", ""))
-                    .getBody()
-                    .getSubject();
+                .setSigningKey("MyJwtSecret")
+                .parseClaimsJws(token.replace("Bearer ", ""))
+                .getBody()
+                .getSubject();
 
             if (user != null) {
                 return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());

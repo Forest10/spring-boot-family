@@ -13,15 +13,14 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = {"com.forest10.spring.boot.family"})
 public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(SpringBootFamilyApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SpringBootFamilyApplication.class);
+    }
 
-
-	public static void main(String[] args) {
-		System.setProperty("spring.devtools.restart.enabled","true");
-		System.setProperty("spring.devtools.restart.additional-paths","../security,../provider");
-		SpringApplication.run(SpringBootFamilyApplication.class, args);
-	}
+    public static void main(String[] args) {
+        System.setProperty("spring.devtools.restart.enabled", "true");
+        System.setProperty("spring.devtools.restart.additional-paths", "../security,../provider");
+        SpringApplication.run(SpringBootFamilyApplication.class, args);
+    }
 }

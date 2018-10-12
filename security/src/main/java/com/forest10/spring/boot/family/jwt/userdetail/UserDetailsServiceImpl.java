@@ -14,16 +14,15 @@ import static java.util.Collections.emptyList;
 @Service("localUserDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@Autowired
-	private UserAuthRepository applicationUserRepository;
+    @Autowired
+    private UserAuthRepository applicationUserRepository;
 
-
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserAuth applicationUser = applicationUserRepository.findByUsername(username);
-		if (applicationUser == null) {
-			throw new UsernameNotFoundException(username);
-		}
-		return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
-	}
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserAuth applicationUser = applicationUserRepository.findByUsername(username);
+        if (applicationUser == null) {
+            throw new UsernameNotFoundException(username);
+        }
+        return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
+    }
 }
