@@ -1,19 +1,5 @@
 server:
-  port: 8080
-spring:
-  datasource:
-    username: blfip
-    password: d&IB@S&aW%w%i58S
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://140.143.242.205:13136/bilibili_test?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
-  jpa:
-    show-sql: true
-    generate-ddl: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-    open-in-view: false
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # 解决Springboot2.0中Hibernate默认创建的mysq表为myisam引擎问题
+  port: 9011
+
 
 

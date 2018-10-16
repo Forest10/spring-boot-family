@@ -1,13 +1,11 @@
 package com.forest10.spring.boot.family.controller;
 
 import com.forest10.spring.boot.family.async.Task;
-import com.google.common.base.Stopwatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author Forest10
@@ -16,17 +14,17 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class TestController {
 
-	@Resource
-	private Task task;
+    @Resource
+    private Task task;
 
-	@GetMapping("task")
-	public String task() throws Exception {
+    @GetMapping("/task")
+    public String task() throws Exception {
 
-		task.doTaskOne();
-		task.doTaskTwo();
-		task.doTaskThree();
-		Future<String> stringFuture = task.asyncMethodWithReturnType();
-		return stringFuture.get();
-	}
+        task.doTaskOne();
+        task.doTaskTwo();
+        task.doTaskThree();
+        Future<String> stringFuture = task.asyncMethodWithReturnType();
+        return stringFuture.get();
+    }
 
 }
