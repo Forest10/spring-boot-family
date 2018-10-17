@@ -28,6 +28,6 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
     @RequestMapping("/")
     public String index(String name) {
-        return "hi" + name;
+        return "hi " + name;
     }
 }
