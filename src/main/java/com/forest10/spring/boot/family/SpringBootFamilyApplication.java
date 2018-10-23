@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.collect.Lists;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -46,7 +47,7 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
     public ObjectMapper objectMapper() {
         return Jackson2ObjectMapperBuilder.json()
             .featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-            .modules(Lists.newArrayList(new Jdk8Module(), new SimpleModule()))
+            .modules(Lists.newArrayList(new JavaTimeModule()))
             .build();
     }
 }

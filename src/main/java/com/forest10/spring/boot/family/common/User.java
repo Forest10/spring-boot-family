@@ -1,6 +1,7 @@
 package com.forest10.spring.boot.family.common;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class User implements Serializable {
     private String name;
     private Integer age;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date CreateTime;
     private LocalDate dTime;
 
