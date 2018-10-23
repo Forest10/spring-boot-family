@@ -9,14 +9,16 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootFamilyApplication.class, args);
-	}
+    public static void main(String[] args) {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(this.getClass());
-	}
+        SpringApplication.run(SpringBootFamilyApplication.class, args);
+        Runtime.getRuntime()
+            .addShutdownHook(new Thread(() -> System.out.println("执行shutdown hook")));
+    }
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(this.getClass());
+    }
 
 }
