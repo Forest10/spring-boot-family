@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface ReadingService {
 
-	List<Book> getAll();
+    List<Book> getAll();
 
 }

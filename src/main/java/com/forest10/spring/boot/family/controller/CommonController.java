@@ -19,26 +19,24 @@ import javax.annotation.Resource;
 @RequestMapping("/redisTest")
 public class CommonController {
 
-	@Resource
-	private RedisTemplateExample redisTemplateExample;
-@Resource
-	private ReadingListRepository readingListRepository;
+    @Resource
+    private RedisTemplateExample redisTemplateExample;
+    @Resource
+    private ReadingListRepository readingListRepository;
 
+    @GetMapping(value = "/listOp")
+    public void getAllBooks(String userId, String url) {
+        redisTemplateExample.addLink(userId, url);
+    }
 
-	@GetMapping(value = "/listOp")
-	public void getAllBooks(String userId, String url) {
-		redisTemplateExample.addLink(userId, url);
-	}
+    @GetMapping(value = "/transaction")
+    public void transaction(Boolean throwEx) {
+        redisTemplateExample.transaction(throwEx);
+    }
 
-	@GetMapping(value = "/transaction")
-	public void transaction(Boolean throwEx) {
-		redisTemplateExample.transaction(throwEx);
-	}
-
-	@GetMapping(value = "/testEnableTx")
-	public void testEnableTx(Boolean throwEx) {
-		redisTemplateExample.addBook(throwEx);
-	}
-
+    @GetMapping(value = "/testEnableTx")
+    public void testEnableTx(Boolean throwEx) {
+        redisTemplateExample.addBook(throwEx);
+    }
 
 }

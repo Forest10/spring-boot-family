@@ -19,13 +19,12 @@ import java.util.List;
 @CacheConfig(cacheNames = "Book")
 public class ReadingServiceImpl implements ReadingService {
 
+    @Resource
+    private ReadingListRepository readingListRepository;
 
-	@Resource
-	private ReadingListRepository readingListRepository;
-
-	@Cacheable
-	@Override
-	public List<Book> getAll() {
-		return readingListRepository.findAll();
-	}
+    @Cacheable
+    @Override
+    public List<Book> getAll() {
+        return readingListRepository.findAll();
+    }
 }

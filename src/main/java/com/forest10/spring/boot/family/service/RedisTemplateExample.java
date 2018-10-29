@@ -23,72 +23,73 @@ import java.util.List;
 @Service
 public class RedisTemplateExample {
 
+    @Resource
+    private RedisTemplate<String, String> redisCacheTemplate;
+    @Resource
+    private ReadingListRepository readingListRepository;
 
-	@Resource
-	private RedisTemplate<String,String> redisCacheTemplate;
-	@Resource
-	private ReadingListRepository readingListRepository;
+    @Resource(name = "redisCacheTemplate")
+    private ListOperations<String, String> listOps;
 
+    /**
+     * 实验 list 操作
+     *
+     * @param userId
+     * @param url
+     */
+    public void addLink(String userId, String url) {
+        listOps.leftPush(userId, url);
+    }
 
-	@Resource(name = "redisCacheTemplate")
-	private ListOperations<String, String> listOps;
+    /**
+     * 测试 Redis事务
+     *
+     * @param throwEx
+     */
+    public void transaction(boolean throwEx) {
 
-	/**
-	 * 实验 list 操作
-	 *
-	 * @param userId
-	 * @param url
-	 */
-	public void addLink(String userId, String url) {
-		listOps.leftPush(userId, url);
-	}
+        //execute a transaction
+        List<Object> txResults = redisCacheTemplate.execute(new SessionCallback<List<Object>>() {
+            @Override
+            public List<Object> execute(RedisOperations operations) throws DataAccessException {
+                operations.multi();
+                operations.opsForSet()
+                    .add("txkey", "value1");
+                operations.opsForSet()
+                    .add("txkey", "value2");
+                // This will contain the results of all ops in the transaction
+                if (throwEx) {
+                    int i = 1 / 0;
+                }
+                operations.opsForSet()
+                    .add("txkey", "value3");
+                return operations.exec();
+            }
+        });
 
-	/**
-	 * 测试 Redis事务
-	 *
-	 * @param throwEx
-	 */
-	public void transaction(boolean throwEx) {
+        System.out.println("Number of items added to set: " + txResults.get(0));
+    }
 
-		//execute a transaction
-		List<Object> txResults = redisCacheTemplate.execute(new SessionCallback<List<Object>>() {
-			@Override
-			public List<Object> execute(RedisOperations operations) throws DataAccessException {
-				operations.multi();
-				operations.opsForSet().add("txkey", "value1");
-				operations.opsForSet().add("txkey", "value2");
-				// This will contain the results of all ops in the transaction
-				if (throwEx) {
-					int i = 1 / 0;
-				}
-				operations.opsForSet().add("txkey", "value3");
-				return operations.exec();
-			}
-		});
+    /**
+     * 测试事务注解
+     *
+     * @param throwEx
+     */
+    @Transactional(rollbackFor = Exception.class)
+    public void addBook(boolean throwEx) {
+        listOps.leftPush("TransactionalKey", new Date() + "");
+        log.info("redis complete");
+        Book book = Book.builder()
+            .isbn("33ee")
+            .reader("ewe")
+            .build();
+        readingListRepository.save(book);
+        log.info("mysql complete");
 
-		System.out.println("Number of items added to set: " + txResults.get(0));
-	}
-
-	/**
-	 * 测试事务注解
-	 * @param throwEx
-	 */
-	@Transactional(rollbackFor = Exception.class)
-	public void addBook(boolean throwEx) {
-		listOps.leftPush("TransactionalKey", new Date() + "");
-		log.info("redis complete");
-		Book book = Book.builder()
-				.isbn("33ee")
-				.reader("ewe")
-				.build();
-		readingListRepository.save(book);
-		log.info("mysql complete");
-
-		if (throwEx) {
-			int i = 1 / 0;
-		}
-	}
-
+        if (throwEx) {
+            int i = 1 / 0;
+        }
+    }
 
 }
 

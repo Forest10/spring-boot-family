@@ -17,13 +17,12 @@ import javax.annotation.Resource;
 @RestController
 public class ReadingListController {
 
-	@Resource
-	private ReadingService readingService;
+    @Resource
+    private ReadingService readingService;
 
-
-	@GetMapping(value = "/getAll")
-	public JsonResult getAllBooks() {
-		return JsonResult.success("添加成功", readingService.getAll());
-	}
+    @GetMapping(value = "/getAll")
+    public JsonResult getAllBooks() {
+        return JsonResult.success("添加成功", readingService.getAll());
+    }
 
 }
