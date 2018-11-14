@@ -6,4 +6,7 @@ package com.forest10.spring.boot.family.service;
  * 占位
  */
 public interface BasicService {
+    void connect();
+
+    void reg();
 }

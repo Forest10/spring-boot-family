@@ -32,11 +32,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.forest10/forest10-tool -->
+        <dependency>
+            <groupId>com.forest10</groupId>
+            <artifactId>forest10-tool</artifactId>
+            <version>1.0.12</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
@@ -72,7 +80,11 @@
             <version>4.2</version>
         </dependency>
         <!-- apache -->
-
+        <dependency>
+            <groupId>org.springframework.statemachine</groupId>
+            <artifactId>spring-statemachine-core</artifactId>
+            <version>2.0.3.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
