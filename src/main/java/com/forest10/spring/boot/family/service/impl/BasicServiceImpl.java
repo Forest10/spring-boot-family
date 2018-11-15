@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 /**
@@ -19,8 +21,15 @@ import javax.annotation.Resource;
 @Service
 public class BasicServiceImpl implements BasicService {
 
+
     @Resource
     StateMachine<RegStatesEnum, RegEventEnum> stateMachine;
+
+    @PostConstruct
+    public void init() {
+        log.info("stateMachine start");
+        stateMachine.start();
+    }
 
     @Override
     public void connect() {
@@ -32,7 +41,6 @@ public class BasicServiceImpl implements BasicService {
 
             @Override
             public void afterProcess() {
-                stateMachine.start();
                 stateMachine.sendEvent(RegEventEnum.CONNECT);
             }
         });
@@ -48,9 +56,14 @@ public class BasicServiceImpl implements BasicService {
 
             @Override
             public void afterProcess() {
-                stateMachine.start();
                 stateMachine.sendEvent(RegEventEnum.REGISTER);
             }
         });
+    }
+
+    @PreDestroy
+    public void destroy() {
+        log.info("stateMachine stop");
+        stateMachine.stop();
     }
 }
