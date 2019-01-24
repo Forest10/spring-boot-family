@@ -16,4 +16,5 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootFamilyApplication.class, args);
 	}
+
 }
