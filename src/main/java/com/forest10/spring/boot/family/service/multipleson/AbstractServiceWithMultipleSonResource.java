@@ -8,7 +8,8 @@ package com.forest10.spring.boot.family.service.multipleson;
 public abstract class AbstractServiceWithMultipleSonResource {
 
     /**
-     * this interface has more than one son
+     * this interface has more than one son.so the AbstractServiceWithMultipleSonResource`s
+     * inheriting class should be rewrite how to inject iTest
      */
     protected ITest iTest;
 
