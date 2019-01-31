@@ -1,6 +1,7 @@
 package com.forest10.spring.boot.family;
 
 import com.forest10.spring.boot.family.common.JsonResult;
+import com.forest10.spring.boot.family.service.common.CommonServiceWithOneSonResource;
 import com.forest10.spring.boot.family.service.multipleson.CommonServiceWithMultipleSonResource;
 import javax.annotation.Resource;
 import org.springframework.boot.SpringApplication;
@@ -25,10 +26,17 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
     }
 
     @Resource
+    private CommonServiceWithOneSonResource commonServiceWithOneSonResource;
+    @Resource
     private CommonServiceWithMultipleSonResource commonServiceWithMultipleSonResource;
 
-    @GetMapping("/say")
-    public JsonResult<String> say() {
+    @GetMapping("/sayWithOneSonResource")
+    public JsonResult<String> commonServiceWithOnSonResource() {
+        return JsonResult.success(commonServiceWithOneSonResource.commonSay());
+    }
+
+    @GetMapping("/sayWithMultipleSonResource")
+    public JsonResult<String> sayWithMultipleSonResource() {
         return JsonResult.success(commonServiceWithMultipleSonResource.commonSay());
     }
 
