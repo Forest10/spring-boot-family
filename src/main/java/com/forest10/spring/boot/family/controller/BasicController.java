@@ -1,13 +1,7 @@
 package com.forest10.spring.boot.family.controller;
 
 import com.forest10.spring.boot.family.properties.CoreProperties;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.qrcode.QRCodeWriter;
-import java.io.IOException;
-import javax.servlet.ServletOutputStream;
+import com.forest10.spring.boot.family.utils.QRCodeUtil;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,24 +34,8 @@ public class BasicController {
 
 
     @GetMapping(value = "/getSearchQcode")
-    public void getSearchQcode(HttpServletResponse resp, String str) throws IOException {
+    public void getSearchQcode(HttpServletResponse resp, String str) throws Exception {
         String url = "https://www.baidu.com/s?wd=" + str;
-        ServletOutputStream stream = null;
-        try {
-            int width = 2000;//图片的宽度
-            int height = 2000;//高度
-            stream = resp.getOutputStream();
-            QRCodeWriter writer = new QRCodeWriter();
-            BitMatrix m = writer.encode(url, BarcodeFormat.QR_CODE, width, height);
-            MatrixToImageWriter.writeToStream(m, "png", stream);
-        } catch (WriterException e) {
-            log.error("生成二维码失败:", e);
-        } finally {
-            if (stream != null) {
-                stream.flush();
-                stream.close();
-            }
-        }
-
+        QRCodeUtil.encode(url, resp.getOutputStream());
     }
 }
