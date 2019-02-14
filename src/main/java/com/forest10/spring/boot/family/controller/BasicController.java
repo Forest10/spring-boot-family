@@ -8,26 +8,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Forest10
- * @date 2018/9/4 下午2:28
- * 占位
+ * @date 2018/9/4 下午2:28 占位
  */
 @RestController
 public class BasicController {
 
 
-	@Autowired
-	private CoreProperties coreProperties;
+    @Autowired
+    private CoreProperties coreProperties;
 
-	@RequestMapping("/")
-	public String index() {
-		return "index";
-	}
+    @RequestMapping("/")
+    public String index() {
+        return "index";
+    }
 
 
-	@GetMapping("/properties")
-	public String properties() {
-		return coreProperties.toString();
-	}
+    @GetMapping("/properties")
+    public String properties() {
+        return coreProperties.toString();
+    }
 
 
 }
