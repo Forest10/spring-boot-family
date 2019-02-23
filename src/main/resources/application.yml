@@ -5,3 +5,9 @@ core:
   cpu: Xeno
 
 
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:}
+
+
+
