@@ -8,6 +8,6 @@ core:
 jasypt:
   encryptor:
     password: ${JASYPT_ENCRYPTOR_PASSWORD:}
-
+###  --jasypt.encryptor.password=XXXX
 
 
