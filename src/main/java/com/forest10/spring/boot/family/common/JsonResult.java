@@ -41,6 +41,10 @@ public class JsonResult<T> implements Serializable {
         return new JsonResult<>(0, message, data);
     }
 
+    public static <T> JsonResult<T> success(T data) {
+        return new JsonResult<>(0, "success", data);
+    }
+
     public static <T> JsonResult<T> error(String message) {
         return new JsonResult<>(-1, message, null);
     }
