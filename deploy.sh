@@ -12,6 +12,7 @@ APP_LOG=${APP_HOME}/logs/spring-boot-jasypt.log # 应用的日志文件
 JAVA_OUT=${APP_HOME}/logs/start.log  #应用的启动日志
 JAVA_HOME=/usr/develop/jdk1.8/bin #机器的java环境
 
+
 # 创建出相关目录
 mkdir -p ${HEALTH_CHECK_FILE_DIR}
 mkdir -p ${APP_HOME}
