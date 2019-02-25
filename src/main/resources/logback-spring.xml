@@ -1,0 +1,94 @@
+<configuration>
+
+
+  <springProperty defaultValue="security-center-web" name="myAppName" scope="context"
+    source="spring.application.name"/>
+
+  <if condition='isDefined("catalina.base")'>
+    <then>
+      <property name="LOG_HOME" value="${catalina.base}/logs"/>
+    </then>
+    <else>
+      <property name="LOG_HOME" value="./logs"/>
+    </else>
+  </if>
+  <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+  <property name="LOG_PATTERN"
+    value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [${myAppName:-},traceId:[%X{X-B3-TraceId:-}],spanId:[%X{X-B3-SpanId:-}]] %-5level  %logger{50} - %msg%n"/>
+
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <!-- encoder 默认配置为PatternLayoutEncoder -->
+    <encoder>
+      <pattern>${LOG_PATTERN}</pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="INFO">
+    <file>${LOG_HOME}/sys.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>${LOG_PATTERN}</pattern>
+      <charset>utf-8</charset>
+    </encoder>
+    <!-- 只输出level级别以上的日志 -->
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>INFO</level>
+    </filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!--日志文件输出的文件名-->
+      <FileNamePattern>${LOG_HOME}/sys.%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+      <!--日志文件保留天数-->
+      <MaxHistory>30</MaxHistory>
+      <maxFileSize>2GB</maxFileSize>
+      <totalSizeCap>30GB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+
+  <!-- 异步输出 -->
+  <appender class="ch.qos.logback.classic.AsyncAppender" name="ASYNC_INFO">
+    <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+    <discardingThreshold>64</discardingThreshold>
+    <!-- 更改默认的队列的大小,该值会影响性能.默认值为256 -->
+    <queueSize>1024</queueSize>
+    <!--提取调用者数据,默认为false-->
+    <includeCallerData>true</includeCallerData>
+    <!-- 添加附加的appender,最多只能添加一个 -->
+    <appender-ref ref="INFO"/>
+  </appender>
+
+  <!--error级别以上日志-->
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="ERROR">
+    <file>${LOG_HOME}/error.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>${LOG_PATTERN}</pattern>
+      <charset>utf-8</charset>
+    </encoder>
+    <!-- 只输出level级别以上的日志 -->
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>ERROR</level>
+    </filter>
+    <!--日志按天备份-->
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOG_HOME}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <!--日志文件保留天数-->
+      <MaxHistory>30</MaxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <!-- 异步输出 -->
+  <appender class="ch.qos.logback.classic.AsyncAppender" name="ASYNC_ERROR">
+    <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+    <discardingThreshold>64</discardingThreshold>
+    <!-- 更改默认的队列的大小,该值会影响性能.默认值为256 -->
+    <queueSize>1024</queueSize>
+    <!--提取调用者数据,默认为false-->
+    <includeCallerData>true</includeCallerData>
+    <!-- 添加附加的appender,最多只能添加一个 -->
+    <appender-ref ref="ERROR"/>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="ASYNC_INFO"/>
+    <appender-ref ref="ASYNC_ERROR"/>
+  </root>
+
+</configuration>
