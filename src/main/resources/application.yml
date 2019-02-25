@@ -3,7 +3,11 @@ server:
 
 core:
   cpu: Xeno
-
+spring:
+  mvc:
+    static-path-pattern: /**
+  profiles:
+    active: @profiles.active@
 
 jasypt:
   encryptor:

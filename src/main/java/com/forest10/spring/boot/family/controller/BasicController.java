@@ -4,9 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.forest10.spring.boot.family.common.JsonResult;
 import com.forest10.spring.boot.family.properties.CoreProperties;
 import java.util.Base64;
+import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,12 +21,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class BasicController {
 
 
-    @Autowired
+    @Resource
     private CoreProperties coreProperties;
+    @Value("${spring.profiles.active}")
+    private String activeProfile;
+    @Value("${jasypt.encryptor.password}")
+    private String jasyptencryptorpassword;
 
-    @RequestMapping("/")
-    public String index() {
-        return "index";
+    @Resource
+    StringEncryptor stringEncryptor;
+
+    @GetMapping("/activeProfile")
+    public String activeProfile() {
+        return activeProfile;
     }
 
 
@@ -34,11 +42,18 @@ public class BasicController {
         return coreProperties.toString();
     }
 
-    @Autowired
-    StringEncryptor stringEncryptor;
+    @RequestMapping("/")
+    public String index() {
+        return "new index";
+    }
+
+    @GetMapping("/jasyptencryptorpassword")
+    public String jasyptencryptorpassword() {
+        return jasyptencryptorpassword;
+    }
 
     @GetMapping(value = "/encryptPwd")
-    public JsonResult encryptPwd(String base64edPwd, String timestamp) {
+    public JsonResult encryptPwd(String base64edPwd) {
         String pwd = new String(Base64.getDecoder().decode(base64edPwd));
         String encrypt = stringEncryptor.encrypt(pwd);
         log.info("传入参数:{},加密后:{}", pwd, encrypt);
