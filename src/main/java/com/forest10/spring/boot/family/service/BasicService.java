@@ -6,4 +6,9 @@ package com.forest10.spring.boot.family.service;
  */
 public interface BasicService {
 
+    void doWithLock();
+
+    String doWithLockReturn();
 }
+
+

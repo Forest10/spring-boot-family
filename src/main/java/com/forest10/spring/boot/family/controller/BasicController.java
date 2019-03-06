@@ -3,6 +3,7 @@ package com.forest10.spring.boot.family.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.forest10.spring.boot.family.common.JsonResult;
 import com.forest10.spring.boot.family.properties.CoreProperties;
+import com.forest10.spring.boot.family.service.BasicService;
 import java.util.Base64;
 import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,8 @@ public class BasicController {
     private String activeProfile;
     @Value("${jasypt.encryptor.password}")
     private String jasyptencryptorpassword;
+    @Resource
+    private BasicService basicService;
 
     @Resource
     StringEncryptor stringEncryptor;
@@ -62,6 +65,18 @@ public class BasicController {
         jsonObject.put("encrypt", encrypt);
         return JsonResult.success(jsonObject);
 
+    }
+
+
+    @GetMapping("/doWithLock")
+    public void doWithLock() {
+        basicService.doWithLock();
+    }
+
+
+    @GetMapping("/doWithLockReturn")
+    public String doWithLockReturn() {
+        return basicService.doWithLockReturn();
     }
 
 

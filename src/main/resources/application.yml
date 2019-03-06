@@ -8,10 +8,23 @@ spring:
     static-path-pattern: /**
   profiles:
     active: @profiles.active@
-
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: foobared
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 1
+        max-idle: 8
+        min-idle: 0
+    database: 0
 jasypt:
   encryptor:
     password: ${JASYPT_ENCRYPTOR_PASSWORD:}
 ###  --jasypt.encryptor.password=XXXX
 
-
+management:
+  health:
+    redis:
+      enabled: false
