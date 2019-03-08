@@ -2,10 +2,9 @@ package com.forest10.spring.boot.family.controller;
 
 import com.forest10.spring.boot.family.api.pojo.JsonResult;
 import com.forest10.spring.boot.family.service.ReadingService;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * 描述:
@@ -22,7 +21,7 @@ public class ReadingListController {
 
     @GetMapping(value = "/getAll")
     public JsonResult getAllBooks() {
-        return JsonResult.success("添加成功", readingService.getAll());
+        return JsonResult.success("SUCCESS", readingService.getAll());
     }
 
 }

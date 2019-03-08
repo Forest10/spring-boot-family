@@ -3,12 +3,11 @@ package com.forest10.spring.boot.family.service.impl;
 import com.forest10.spring.boot.family.domain.Book;
 import com.forest10.spring.boot.family.repository.ReadingListRepository;
 import com.forest10.spring.boot.family.service.ReadingService;
+import java.util.List;
+import javax.annotation.Resource;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author Forest10
@@ -16,13 +15,13 @@ import java.util.List;
  */
 @Service
 //命名空间(整体,也可单独加在各个方法)
-@CacheConfig(cacheNames = "Book")
+@CacheConfig(cacheNames = "spring-boot-family")
 public class ReadingServiceImpl implements ReadingService {
 
     @Resource
     private ReadingListRepository readingListRepository;
 
-    @Cacheable
+    @Cacheable(unless = "#result eq null or #result eq ''")
     @Override
     public List<Book> getAll() {
         return readingListRepository.findAll();

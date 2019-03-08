@@ -2,6 +2,9 @@ package com.forest10.spring.boot.family.service;
 
 import com.forest10.spring.boot.family.domain.Book;
 import com.forest10.spring.boot.family.repository.ReadingListRepository;
+import java.util.Date;
+import java.util.List;
+import javax.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.ListOperations;
@@ -10,10 +13,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
 
 /**
  * @author Forest10
@@ -28,14 +27,11 @@ public class RedisTemplateExample {
     @Resource
     private ReadingListRepository readingListRepository;
 
-    @Resource(name = "redisCacheTemplate")
-    private ListOperations<String, String> listOps;
+    @Resource
+    private ListOperations<Object, Object> listOps;
 
     /**
      * 实验 list 操作
-     *
-     * @param userId
-     * @param url
      */
     public void addLink(String userId, String url) {
         listOps.leftPush(userId, url);
@@ -43,8 +39,6 @@ public class RedisTemplateExample {
 
     /**
      * 测试 Redis事务
-     *
-     * @param throwEx
      */
     public void transaction(boolean throwEx) {
 
@@ -67,13 +61,11 @@ public class RedisTemplateExample {
             }
         });
 
-        System.out.println("Number of items added to set: " + txResults.get(0));
+        log.info("Number of items added to set: {}", txResults.get(0));
     }
 
     /**
      * 测试事务注解
-     *
-     * @param throwEx
      */
     @Transactional(rollbackFor = Exception.class)
     public void addBook(boolean throwEx) {

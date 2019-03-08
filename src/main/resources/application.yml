@@ -1,11 +1,17 @@
 server:
   port: 8080
 spring:
+  mvc:
+    static-path-pattern: /**
+  profiles:
+    active: @profiles.active@
+  application:
+    name: @artifactId@
   datasource:
-    username: blfip
+    username: hi
     password: d&IB@S&aW%w%i58S
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://140.143.242.205:13136/bilibili_test?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://127.0.0.1:13136/bilibili_test?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
     hikari:
       validation-timeout: 3000
       connection-timeout: 60000
