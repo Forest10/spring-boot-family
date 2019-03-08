@@ -1,7 +1,7 @@
 ###这里面都是一些公共配置.需要个性化配置的在各自的profiles.active.yml里
 server:
   servlet:
-    path: /security
+    path: /
   port: 8233
 spring:
   mvc:
