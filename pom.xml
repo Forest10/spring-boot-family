@@ -22,9 +22,11 @@
 
   <properties>
     <java.version>1.8</java.version>
+    <mybatis-spring.version>1.3.2</mybatis-spring.version>
     <boot-parent.version>2.0.0.RELEASE</boot-parent.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <druid-spring-boot-starter.version>1.1.14</druid-spring-boot-starter.version>
   </properties>
 
   <dependencies>
@@ -37,8 +39,12 @@
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
+    <dependency>
+      <groupId>com.forest10</groupId>
+      <artifactId>forest10-tool</artifactId>
+      <version>1.0.13</version>
+    </dependency>
 
-    <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
@@ -93,6 +99,30 @@
     <!--log if-->
 
     <!--log-->
+    <!--redis-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-pool2</artifactId>
+    </dependency>
+    <!--redis-->
+
+
+    <!--数据库-->
+    <!--第三方连接池-->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid-spring-boot-starter</artifactId>
+      <version>${druid-spring-boot-starter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis.spring.boot</groupId>
+      <artifactId>mybatis-spring-boot-starter</artifactId>
+      <version>${mybatis-spring.version}</version>
+    </dependency>
   </dependencies>
   <profiles>
     <profile>
@@ -117,6 +147,21 @@
       </properties>
     </profile>
   </profiles>
+
+  <repositories>
+    <repository>
+      <id>maven-ali</id>
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+    </repository>
+  </repositories>
   <build>
     <finalName>spring-boot-jasypt</finalName>
     <resources>
