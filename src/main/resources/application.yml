@@ -1,13 +1,90 @@
+###这里面都是一些公共配置.需要个性化配置的在各自的profiles.active.yml里
 server:
-  port: 9011
-
-core:
-  cpu: Xeno
+  servlet:
+    path: /security
+  port: 8233
 spring:
   mvc:
     static-path-pattern: /**
   profiles:
     active: @profiles.active@
+  application:
+    name: @parent.artifactId@-@profiles.active@
+  datasource:
+    druid:
+      initial-size: 1
+      max-active: 200
+      min-idle: 1
+      max-wait: 60000
+      validation-query: SELECT 1
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      use-global-data-source-stat: true
+      filters: slf4j,stat,wall
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: /druid/*
+        enabled: true
+      stat-view-servlet:
+        url-pattern: /views/druid/*
+        enabled: true
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+          enabled: true
+        slf4j:
+          result-set-log-enabled: true
+          connection-log-enabled: true
+          connection-log-error-enabled: true
+          statement-log-enabled: true
+          statement-log-error-enabled: true
+          enabled: true
+  #redis 配置
+  redis:
+    lettuce:
+      pool:
+        max-active: 100
+        max-wait: -1
+        max-idle: 8
+        min-idle: 1
+    database: 3
+
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  jackson:
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+
+
+  output:
+    ansi:
+      enabled: detect
+  #traceId
+  sleuth:
+    traceId128: true
+
+#关闭一些无用管理端
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
+  health:
+    db:
+      enabled: false
+    solr:
+      enabled: false
+    mail:
+      enabled: false
 
 jasypt:
   encryptor:
