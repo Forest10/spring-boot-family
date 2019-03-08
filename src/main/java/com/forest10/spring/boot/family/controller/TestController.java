@@ -1,11 +1,11 @@
 package com.forest10.spring.boot.family.controller;
 
-import com.forest10.spring.boot.family.async.Task;
+import com.forest10.spring.boot.family.async.LocalTaskService;
+import com.forest10.spring.boot.family.async.MailService;
+import java.util.concurrent.Future;
+import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
-import java.util.concurrent.Future;
 
 /**
  * @author Forest10
@@ -15,16 +15,23 @@ import java.util.concurrent.Future;
 public class TestController {
 
     @Resource
-    private Task task;
+    private LocalTaskService localTaskService;
+    @Resource
+    private MailService mailService;
 
-    @GetMapping("/task")
-    public String task() throws Exception {
+    @GetMapping("/asyncLocalTask")
+    public String asyncLocalTask() throws Exception {
 
-        task.doTaskOne();
-        task.doTaskTwo();
-        task.doTaskThree();
-        Future<String> stringFuture = task.asyncMethodWithReturnType();
+        localTaskService.doTaskOne();
+        localTaskService.doTaskTwo();
+        localTaskService.doTaskThree();
+        Future<String> stringFuture = localTaskService.asyncMethodWithReturnType();
         return stringFuture.get();
+    }
+
+    @GetMapping("/mail")
+    public void mail() {
+        mailService.send();
     }
 
 }
