@@ -1,9 +1,12 @@
 package com.forest10.spring.boot.family.controller;
 
+import com.forest10.spring.boot.family.domain.Book;
 import com.forest10.spring.boot.family.service.BookService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 
@@ -17,19 +20,34 @@ import javax.annotation.Resource;
 @Controller
 public class ReadingListController {
 
-	@Resource
-	private BookService bookService;
+    private static final String TEMPLATE_LIST = "book/list";
+    private static final String ADD = "book/add";
+    @Resource
+    private BookService bookService;
 
-	private static final String TEMPLATE_INDEX = "index";
+    @GetMapping(value = "/")
+    public String index() {
+        return "redirect:/list";
+    }
 
-	@RequestMapping(value = "/")
-	public String index() {
-		return TEMPLATE_INDEX;
-	}
+    @RequestMapping(value = "/list")
+    public ModelAndView getList(ModelAndView modelAndView) {
+        modelAndView.addObject("books", bookService.getAll());
+        modelAndView.setViewName(TEMPLATE_LIST);
+        return modelAndView;
+    }
 
-	@RequestMapping(value = "/list")
-	public String getList(Model model) {
-		model.addAttribute("books", bookService.getAll());
-		return "book/list";
-	}
+    @RequestMapping(value = "/add")
+    public ModelAndView add(ModelAndView modelAndView) {
+        modelAndView.setViewName(ADD);
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/addBook")
+    public ModelAndView addBook(Book book) {
+        bookService.save(book);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/list");
+        return modelAndView;
+    }
 }

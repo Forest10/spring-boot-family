@@ -12,4 +12,6 @@ public interface BookService {
 
 	List<Book> getAll();
 
+	void save(Book book);
+
 }
