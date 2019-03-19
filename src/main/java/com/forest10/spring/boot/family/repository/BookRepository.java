@@ -10,5 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Forest10
  * @date 2018/04/01 16:11
  */
-public interface ReadingListRepository extends JpaRepository<Book, Long> {
+public interface BookRepository extends JpaRepository<Book, Long> {
+
+
 }

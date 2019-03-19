@@ -1,15 +1,14 @@
 package com.forest10.spring.boot.family.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 /**
  * 描述:
@@ -33,4 +32,6 @@ public class Book {
 	private String reader;
 
 	private String isbn;
+
+
 }
