@@ -5,7 +5,7 @@ spring:
     druid:
       url: jdbc:mysql://127.0.0.1:3306/local
       username: root
-      password: 12345678
+      password: aJPlPRtW2qPrwOKCK5WySP5Ht5mhNII3LSiRbkyQjS8rniVlR4WYYyFuTx1ZUNeHMmYnasG7WMBBwxy8t9Gk2Q==
   #redis 配置
   redis:
     host: 127.0.0.1
