@@ -87,7 +87,6 @@ management:
     mail:
       enabled: false
 publickey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIfzwbnAKuYtejeGqTlZnM0yEAuLPeG8qUEYxh6juvPkD7PGFcYy3Acp3f/m7L2NjX6OKhMI4fvyVzwrMIlX18UCAwEAAQ==
-  password:aJPlPRtW2qPrwOKCK5WySP5Ht5mhNII3LSiRbkyQjS8rniVlR4WYYyFuTx1ZUNeHMmYnasG7WMBBwxy8t9Gk2Q==
 jasypt:
   encryptor:
     password: ${JASYPT_ENCRYPTOR_PASSWORD:}
