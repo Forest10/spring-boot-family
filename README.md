@@ -1,5 +1,5 @@
   
-本仓库于 2019-02-25 11:33:25 使用了源码自动生成模板 spring-boot 。详情见template_info.md文件。
+本仓库于 2019-04-25 11:33:25 使用了源码自动生成模板 spring-boot 。详情见template_info.md文件。
 
 ------
 部署时配置salt(盐)值
