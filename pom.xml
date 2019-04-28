@@ -131,6 +131,11 @@
       <artifactId>mybatis-spring-boot-starter</artifactId>
       <version>${mybatis-spring.version}</version>
     </dependency>
+    <dependency>
+      <artifactId>db-helper-api</artifactId>
+      <groupId>com.atour</groupId>
+      <version>0.0.2-Support-offLine-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <profiles>
     <profile>

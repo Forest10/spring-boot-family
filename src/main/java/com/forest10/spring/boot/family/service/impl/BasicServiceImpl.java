@@ -1,6 +1,10 @@
 package com.forest10.spring.boot.family.service.impl;
 
+import com.forest10.spring.boot.family.entity.Book;
+import com.forest10.spring.boot.family.repository.BookDao;
 import com.forest10.spring.boot.family.service.BasicService;
+import java.util.List;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,4 +14,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class BasicServiceImpl implements BasicService {
 
+    @Resource
+    private BookDao bookDao;
+
+    @Override
+    public List<Book> selectAll() {
+        return bookDao.selectAll();
+    }
+
+    @Override
+    public Long insertBook(Book book) {
+        return bookDao.insertBook(book);
+    }
 }

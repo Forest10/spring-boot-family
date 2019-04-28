@@ -1,5 +1,7 @@
 package com.forest10.spring.boot.family.repository;
 
+import com.forest10.spring.boot.family.entity.Book;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,5 +11,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface BookDao {
 
-    void selectAll();
+    List<Book> selectAll();
+
+    Long insertBook(Book book);
+
 }
