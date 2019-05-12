@@ -2,12 +2,11 @@ package com.forest10.spring.boot.family.common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
  * 描述:
@@ -37,6 +36,10 @@ public class JsonResult<T> implements Serializable {
 		this.data = data;
 	}
 
+
+	public static <T> JsonResult<T> success(T data) {
+		return new JsonResult<>(0, "SUCCESS", data);
+	}
 
 	public static <T> JsonResult<T> success(String message, T data) {
 		return new JsonResult<>(0, message, data);
