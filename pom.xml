@@ -37,8 +37,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -60,7 +58,6 @@
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -72,7 +69,12 @@
             <version>4.2</version>
         </dependency>
         <!-- apache -->
-
+        <!-- 加密 -->
+        <dependency>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <version>2.1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
