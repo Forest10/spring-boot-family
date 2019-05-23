@@ -72,6 +72,11 @@
             <version>4.2</version>
         </dependency>
         <!-- apache -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp -->
+        <dependency>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+            <groupId>org.springframework.boot</groupId>
+        </dependency>
 
     </dependencies>
 
