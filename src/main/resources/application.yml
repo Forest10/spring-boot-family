@@ -2,11 +2,18 @@ server:
   port: 8080
 
 core:
-  cpu: Xeno
+  cpu: ENC(hsPPbVVpZ0rZQX6d5oHRNiypCB4n/uHr)
 
-
-
-
+spring:
+  rabbitmq:
+    host: ENC(h01rbU6zikkzQkVqnqTt7dkwYgzZMjtW)
+    username: Forest10
+    password: ENC(fofTvXozXUgyTq+WdQ8GFI5Z4Z7ERaciT0iH97INXAI=)
+    template:
+      retry:
+        enabled: true
+        initial-interval: 2s
+    virtual-host: haha
 
 jasypt:
   encryptor:
