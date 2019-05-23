@@ -2,10 +2,10 @@ server:
   port: 8080
 spring:
   datasource:
-    username: blfip
-    password: d&IB@S&aW%w%i58S
+    username: root
+    password: 12345678
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://140.143.242.205:13136/bilibili_test?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://127.0.0.1/local?useUnicode=true&zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
   jpa:
     show-sql: true
     generate-ddl: true
@@ -15,5 +15,19 @@ spring:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect # 解决Springboot2.0中Hibernate默认创建的mysq表为myisam引擎问题
+  application:
+    name: Spring Boot Admin Web Server
 
-
+#关闭一些无用管理端
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info
+  health:
+    db:
+      enabled: false
+    solr:
+      enabled: false
+    mail:
+      enabled: false

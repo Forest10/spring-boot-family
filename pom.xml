@@ -77,6 +77,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <artifactId>spring-boot-starter-mail</artifactId>
+            <groupId>org.springframework.boot</groupId>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,5 +25,12 @@ public class ReadingListController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public JsonResult addBook(@RequestBody Book book) {
 		return JsonResult.success("添加成功", readingListRepository.save(book));
+	}
+
+
+	public static void main(String[] args) {
+		int i = 1;
+		long j = 1;
+		System.out.println(i - j == 0);
 	}
 }
