@@ -1,7 +1,7 @@
 <configuration>
 
 
-  <springProperty defaultValue="security-center-web" name="myAppName" scope="context"
+  <springProperty defaultValue="spring-boot-family" name="myAppName" scope="context"
     source="spring.application.name"/>
 
   <if condition='isDefined("catalina.base")'>
