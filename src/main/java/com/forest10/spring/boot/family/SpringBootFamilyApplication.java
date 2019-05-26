@@ -36,7 +36,7 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
         for (int i = 0; i < max; i++) {
             stringBuilder.append(s);
         }
-        return RamUsageEstimator
+        return "手机号个数为:" + max + ";占用大小为:" + RamUsageEstimator
             .humanReadableUnits(RamUsageEstimator.sizeOf(stringBuilder.toString()));
     }
 }
