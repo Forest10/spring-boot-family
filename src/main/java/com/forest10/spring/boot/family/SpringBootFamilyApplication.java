@@ -2,6 +2,7 @@ package com.forest10.spring.boot.family;
 
 import com.carrotsearch.sizeof.RamUsageEstimator;
 import com.forest10.web.annotation.EnableLogFilter;
+import java.util.Objects;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -28,10 +29,11 @@ public class SpringBootFamilyApplication extends SpringBootServletInitializer {
     }
 
     @RequestMapping("/")
-    public String index() {
+    public String index(Integer size) {
         String s = "13718799123";
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < 3_100_000; i++) {
+        int max = Objects.isNull(size) ? 3_100_000 : size;
+        for (int i = 0; i < max; i++) {
             stringBuilder.append(s);
         }
         return RamUsageEstimator
