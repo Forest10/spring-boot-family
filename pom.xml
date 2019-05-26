@@ -48,6 +48,12 @@
             <groupId>com.forest10</groupId>
             <artifactId>forest10-tool</artifactId>
             <version>1.0.9</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -70,6 +76,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <artifactId>java-sizeof</artifactId>
+            <groupId>com.carrotsearch</groupId>
+            <version>0.0.5</version>
         </dependency>
     </dependencies>
 
