@@ -18,30 +18,30 @@ import org.springframework.web.bind.annotation.RestController;
 public class BasicController {
 
 
-    @Resource
-    private CoreProperties coreProperties;
-    @Resource
-    private BasicService basicService;
+	@Resource
+	private CoreProperties coreProperties;
+	@Resource
+	private BasicService basicService;
 
 
-    @GetMapping("/properties")
-    public String properties() {
-        return coreProperties.toString();
-    }
+	@GetMapping("/properties")
+	public String properties() {
+		return coreProperties.toString();
+	}
 
-    @RequestMapping("/")
-    public String index() {
-        return "new index";
-    }
+	@RequestMapping("/")
+	public String index() {
+		return "new index";
+	}
 
-    @GetMapping("/getAllBook")
-    public Object getAllBook() {
-        return basicService.selectAll();
-    }
+	@GetMapping("/getAllBook")
+	public Object getAllBook() {
+		return basicService.selectAll();
+	}
 
-    @GetMapping("/insertBook")
-    public Object insertBook(Book book) {
-        return basicService.insertBook(book);
-    }
+	@GetMapping("/insertBook")
+	public Object insertBook(Book book) {
+		return basicService.insertBook(book);
+	}
 
 }

@@ -14,16 +14,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class BasicServiceImpl implements BasicService {
 
-    @Resource
-    private BookDao bookDao;
+	@Resource
+	private BookDao bookDao;
 
-    @Override
-    public List<Book> selectAll() {
-        return bookDao.selectAll();
-    }
+	@Override
+	public List<Book> selectAll() {
+		return bookDao.selectAll();
+	}
 
-    @Override
-    public Long insertBook(Book book) {
-        return bookDao.insertBook(book);
-    }
+	@Override
+	public Long insertBook(Book book) {
+		return bookDao.insertBook(book);
+	}
 }

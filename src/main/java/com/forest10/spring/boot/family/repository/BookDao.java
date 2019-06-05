@@ -13,6 +13,6 @@ public interface BookDao {
 
     List<Book> selectAll();
 
-    Long insertBook(Book book);
+	Long insertBook(Book book);
 
 }

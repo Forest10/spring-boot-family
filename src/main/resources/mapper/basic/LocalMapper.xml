@@ -4,12 +4,10 @@
 <mapper namespace="com.forest10.spring.boot.family.repository.BookDao">
   <insert id="insertBook">
     insert into
-    book
-    (isbn,reader)
-    values (
-    #{isbn},
-    #{reader}
-    )
+      book
+      (isbn, reader)
+    values (#{isbn},
+            #{reader})
 
   </insert>
 

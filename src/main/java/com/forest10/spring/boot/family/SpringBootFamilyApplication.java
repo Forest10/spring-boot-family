@@ -12,14 +12,14 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringBootFamilyApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootFamilyApplication.class, args);
+	}
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(this.getClass());
-    }
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(this.getClass());
+	}
 
 
 }

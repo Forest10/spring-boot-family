@@ -22,7 +22,7 @@
 
   <properties>
     <java.version>1.8</java.version>
-    <mybatis-spring.version>1.3.2</mybatis-spring.version>
+    <mybatis-spring.version>2.0.1</mybatis-spring.version>
     <boot-parent.version>2.0.0.RELEASE</boot-parent.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <mysql-connector-java.version>8.0.15</mysql-connector-java.version>
@@ -130,11 +130,6 @@
       <groupId>org.mybatis.spring.boot</groupId>
       <artifactId>mybatis-spring-boot-starter</artifactId>
       <version>${mybatis-spring.version}</version>
-    </dependency>
-    <dependency>
-      <artifactId>db-helper-api</artifactId>
-      <groupId>com.atour</groupId>
-      <version>0.0.2-Support-offLine-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <profiles>

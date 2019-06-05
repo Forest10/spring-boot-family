@@ -15,17 +15,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DruidConfiguration {
 
-    @Bean
-    public ServletRegistrationBean druidStatViewServlet() {
-        StatViewServlet viewServlet = new StatViewServlet();
-        ServletRegistrationBean<StatViewServlet> servletRegistrationBean =
-            new ServletRegistrationBean(viewServlet, "/druid/*");
-        servletRegistrationBean.addInitParameter(ResourceServlet.PARAM_NAME_USERNAME, "Forest10");
-        servletRegistrationBean
-            .addInitParameter(ResourceServlet.PARAM_NAME_PASSWORD, "Forest10");
-        servletRegistrationBean
-            .addInitParameter(StatViewServlet.PARAM_NAME_RESET_ENABLE, Boolean.toString(false));
-        return servletRegistrationBean;
-    }
+	@Bean
+	public ServletRegistrationBean druidStatViewServlet() {
+		StatViewServlet viewServlet = new StatViewServlet();
+		ServletRegistrationBean<StatViewServlet> servletRegistrationBean =
+				new ServletRegistrationBean(viewServlet, "/druid/*");
+		servletRegistrationBean.addInitParameter(ResourceServlet.PARAM_NAME_USERNAME, "Forest10");
+		servletRegistrationBean
+				.addInitParameter(ResourceServlet.PARAM_NAME_PASSWORD, "Forest10");
+		servletRegistrationBean
+				.addInitParameter(StatViewServlet.PARAM_NAME_RESET_ENABLE, Boolean.toString(false));
+		return servletRegistrationBean;
+	}
 
 }

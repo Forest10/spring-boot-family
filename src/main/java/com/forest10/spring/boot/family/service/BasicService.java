@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface BasicService {
 
-    List<Book> selectAll();
+	List<Book> selectAll();
 
-    Long insertBook(Book book);
+	Long insertBook(Book book);
 
 
 }
