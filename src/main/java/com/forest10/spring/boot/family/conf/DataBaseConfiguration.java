@@ -1,7 +1,7 @@
 package com.forest10.spring.boot.family.conf;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
-import com.forest10.spring.boot.family.conf.mybatis.plugin.MyBatisSizeLimitPlugin;
+import com.forest10.spring.boot.family.conf.mybatis.plugin.MyBatisLargeSizeForbiddenPlugin;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 import org.apache.ibatis.plugin.Interceptor;
@@ -27,7 +27,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 public class DataBaseConfiguration {
 
 	@Resource
-	private MyBatisSizeLimitPlugin secondExamplePlugin;
+	private MyBatisLargeSizeForbiddenPlugin myBatisLargeSizeForbiddenPlugin;
 
 
 	@Bean(name = "dataSource", destroyMethod = "close", initMethod = "init")
@@ -48,7 +48,7 @@ public class DataBaseConfiguration {
 						.getResources("classpath:mapper/basic/*.xml"));
 		sqlSessionFactoryBean.setConfigLocation(
 				new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-config.xml"));
-		sqlSessionFactoryBean.setPlugins(new Interceptor[]{secondExamplePlugin});
+		sqlSessionFactoryBean.setPlugins(new Interceptor[]{myBatisLargeSizeForbiddenPlugin});
 		return sqlSessionFactoryBean.getObject();
 	}
 
