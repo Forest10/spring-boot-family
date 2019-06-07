@@ -2,7 +2,7 @@ package com.forest10.spring.boot.family;
 
 import com.carrotsearch.sizeof.RamUsageEstimator;
 import com.forest10.web.annotation.EnableLogFilter;
-import java.util.Objects;
+import javax.annotation.Resource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -19,24 +19,21 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class SpringBootFamilyApplication extends SpringBootServletInitializer {
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringBootFamilyApplication.class, args);
-    }
+	@Resource
+	private BasicService basicService;
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(this.getClass());
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootFamilyApplication.class, args);
+	}
 
-    @RequestMapping("/")
-    public String index(Integer size) {
-        String s = "13718799123";
-        StringBuilder stringBuilder = new StringBuilder();
-        int max = Objects.isNull(size) ? 3_100_000 : size;
-        for (int i = 0; i < max; i++) {
-            stringBuilder.append(s);
-        }
-        return "手机号个数为:" + max + ";占用大小为:" + RamUsageEstimator
-            .humanReadableUnits(RamUsageEstimator.sizeOf(stringBuilder.toString()));
-    }
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(this.getClass());
+	}
+
+	@RequestMapping("/")
+	public String index(Integer size) {
+		return "占用大小为:" + RamUsageEstimator
+				.humanReadableUnits(RamUsageEstimator.sizeOf(basicService.getMobile(size)));
+	}
 }
