@@ -2,11 +2,13 @@ package com.forest10.spring.boot.family.controller;
 
 import com.forest10.spring.boot.family.common.JsonResult;
 import com.forest10.spring.boot.family.entity.User;
+import com.forest10.spring.boot.family.logic.UserLogic;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,9 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 
+	@Resource
+	private UserLogic userLogic;
+
 	@ApiOperation(value = "注册", notes = "用于用户注册")
-	@PostMapping(value = "/register")
-	public JsonResult register(@RequestBody User user) throws Exception {
+	@GetMapping(value = "/register")
+	public JsonResult register(User user) throws Exception {
+		userLogic.reg();
 		return JsonResult.success("注册成功");
 	}
 
