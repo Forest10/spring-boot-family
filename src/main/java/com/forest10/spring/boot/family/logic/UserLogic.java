@@ -23,6 +23,7 @@ public class UserLogic implements ApplicationEventPublisherAware {
 
 
 	public void reg() {
+		//前后有N多代码
 		log.info("user reg");
 		applicationEventPublisher.publishEvent(new UserSavedEvent(applicationEventPublisher));
 	}
