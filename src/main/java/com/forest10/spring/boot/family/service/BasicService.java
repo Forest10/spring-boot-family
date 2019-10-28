@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class BasicService {
 
 
-	@Scheduled(cron = "")
+	@Scheduled(cron = "0 0 13 * * ?")
 	public void sc() {
 		log.info("呵呵:{}", UUID.randomUUID().toString());
 	}
