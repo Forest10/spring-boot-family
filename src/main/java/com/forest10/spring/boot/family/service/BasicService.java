@@ -16,6 +16,7 @@ public class BasicService {
 
 	@Scheduled(cron = "0 0 13 * * ?")
 	public void sc() {
+
 		log.info("呵呵:{}", UUID.randomUUID().toString());
 	}
 
