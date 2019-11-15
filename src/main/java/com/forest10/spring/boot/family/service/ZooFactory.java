@@ -36,7 +36,6 @@ public class ZooFactory {
 
     private final class DefaultAnnimal implements IZooHandle {
 
-
         @Override
         public String quark() {
             return "动物园未能找到对应的小动物,请选择捐赠!";

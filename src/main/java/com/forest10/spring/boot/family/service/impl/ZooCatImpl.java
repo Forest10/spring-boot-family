@@ -5,6 +5,7 @@ import com.forest10.spring.boot.family.service.IZooHandle;
 import org.springframework.stereotype.Component;
 
 /**
+ * 注意这个没有public
  * @author Forest10
  * @date 2019-05-12 18:09
  */
