@@ -2,6 +2,8 @@ package com.forest10.spring.boot.family.common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
 /**
@@ -10,13 +12,13 @@ import java.util.Objects;
  */
 public enum AnnimalTypeEnum {
 
-    CAT(1, "🐱"),
-    DOG(2, "🐩");
+    CAT("cat", "🐱"),
+    DOG("dog", "🐩");
 
-    private int value;
+    private String value;
     private String desc;
 
-    AnnimalTypeEnum(int value, String desc) {
+    AnnimalTypeEnum(String value, String desc) {
         this.value = value;
         this.desc = desc;
     }
@@ -24,7 +26,7 @@ public enum AnnimalTypeEnum {
     public static AnnimalTypeEnum getByDesc(String desc) {
         for (AnnimalTypeEnum b : AnnimalTypeEnum.values()) {
             if (b.getDesc()
-                .equals(desc)) {
+                    .equals(desc)) {
                 return b;
             }
         }
@@ -35,9 +37,9 @@ public enum AnnimalTypeEnum {
      * 负责包装传入controller传入枚举value参数的.删了(包括注解)系统直接瘫痪
      */
     @JsonCreator
-    public static AnnimalTypeEnum getByValue(int value) {
+    public static AnnimalTypeEnum getByValue(String value) {
         for (AnnimalTypeEnum b : AnnimalTypeEnum.values()) {
-            if (Objects.equals(b.getValue(), value)) {
+            if (StringUtils.equals(b.value, value)) {
                 return b;
             }
         }
@@ -49,7 +51,7 @@ public enum AnnimalTypeEnum {
      * 负责拿到传入controller传入枚举value参数的.删了(包括注解)系统直接瘫痪
      */
     @JsonValue
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
