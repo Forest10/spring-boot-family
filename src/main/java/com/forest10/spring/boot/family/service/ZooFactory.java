@@ -39,7 +39,7 @@ public class ZooFactory {
 
         @Override
         public String quark() {
-            return "这个不是个动物.叫不出来!";
+            return "动物园未能找到对应的小动物,请选择捐赠!";
         }
 
         @Override
