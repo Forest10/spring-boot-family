@@ -1,5 +1,5 @@
 server:
-  port: 9031
+  port: ${random.int[8088,12345]}
 
 core:
   cpu: Xeno
